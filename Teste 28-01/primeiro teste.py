@@ -1,2 +1,2 @@
 print("olá")
-if(1="olá");print("14")
+    if("olá");print("14")

@@ -1,0 +1,6 @@
+nome="Daniel Ruivo Matos"
+y=2
+PY=3,14
+aux="mapa"
+elevado=4**2
+print(nome)
