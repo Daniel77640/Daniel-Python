@@ -14,4 +14,4 @@ numero= int(numero)
 
 dobro=2*numero
 
-print("O 5dobro de ", numero, "e", dobro )
+print("O dobro de ", numero, "e", dobro )
