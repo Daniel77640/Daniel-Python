@@ -9,13 +9,33 @@ x2 = float(input("Escolha o valor 1 "))
 x3 = float(input("Escolha o valor 2 "))
 
 if x1 == "+":
-    print ("a soma é igual a:", x2 + x3)
+    print ("A soma é igual a:", x2 + x3)
 elif x1 == "-":
-    print ("a subtração é igual a:", x2 - x3)
+    print ("A subtração é igual a:", x2 - x3)
 elif x1 == "*":
-    print ("a multiplicação é igual a:", x2 * x3)
+    print ("A multiplicação é igual a:", x2 * x3)
 else:
     if x3 == 0:
-        print ("a divisão não é possivel")
+        print ("A divisão não é possivel")
     else:
-        print ("a divisão é igual a:", x2 / x3)
+        print ("A divisão é igual a:", x2 / x3)
+        
+        
+#resolução
+
+operação = input("Operação:")
+n1 = float(input("N1:"))
+n2 = float(input("N2:"))
+if operação == "+":
+    print(n1+n2)
+elif operação == "-":
+    print(n1-n2)
+elif operação == "*":
+    print(n1*n2)
+elif operação == "/":
+    if n2 == 0:
+        print("Não pode dividir um número por 0")
+    else:
+        print(n1/n2)
+else:
+    print("Operação inválida")

@@ -5,16 +5,13 @@ x = float(input("insere 1 de 3 numeros "))
 x1 =float(input("insere 2 de 3 numeros "))
 x2 = float(input("insere 3 de 3 numeros "))
 
-if x > x1:
-    print ("numero", x "é o maior")
-elif x > x2:
-    print ("numero", x "é o maior")
-elif x1 > x2:
-    print ("numero", x1 "é o maior")
-elif x1 > x:
-    print ("numero", x1 "é o maior")
-else
-    print ("numero", x2 "é o maior")
+if x > x1 and x > x2:
+    print ("numero", x, "é o maior")
+elif x1 > x2 and x1 > x:
+    print ("numero", x1, "é o maior")
+else:
+    print ("numero", x2, "é o maior")
+
     
 
 #resolução1
