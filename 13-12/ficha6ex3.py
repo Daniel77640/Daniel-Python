@@ -20,7 +20,7 @@ idades.sort(reverse = True)
 print (idades)
 
 
-x1= input ("indique uma idade ")
+x1= int(input ("indique uma idade "))
 if x1 in idades:
     print ("A idade está na lista")
 else:
