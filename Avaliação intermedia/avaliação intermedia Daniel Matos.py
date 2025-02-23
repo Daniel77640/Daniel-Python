@@ -80,6 +80,40 @@ except ValueError:
 except ZeroDivisionError:
     print("Erro: Não é possível dividir por zero.")
     
+
+"""1) Reproduz o seguinte Código que tem como objetivo:
+Criar um programa que leia um ficheiro de texto e exibir o seu conteúdo"""
+#resolução ex 1)
+
+with open("exemplo.txt", "r") as ficheiro:
+    conteudo = ficheiro.read()
+    print(conteudo)  
     
-    
+
+""""Reproduz o seguinte Código que tem como objetivo:
+Modificar o exercício anterior para exibir o conteúdo linha por linha."""
+#resolução ex 2)
+
+with open("exemplo.txt", "r") as ficheiro:
+    for linha in ficheiro:
+        print(linha.strip())
+        
+
+"""3) Reproduz o seguinte Código que tem como objetivo:
+Criar um programa que escreva três linhas num ficheiro novo."""
+#resolução ex 3)
+
+with open("novo_ficheiro.txt", "w") as ficheiro:
+    ficheiro.write("Linha 1")
+    ficheiro.write("Linha 2")
+    ficheiro.write("Linha 3")
+
+
+"""4) Reproduz o seguinte Código que tem como objetivo:
+Modificar o programa anterior para acrescentar mais uma linha ao ficheiro."""
+#resolução ex 4)
+
+with open("novo_ficheiro.txt", "a") as ficheiro:
+    ficheiro.write("Linha adicional")
+        
 
