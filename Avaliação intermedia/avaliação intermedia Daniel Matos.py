@@ -48,3 +48,38 @@ try:
 except Exception as e:
     print("Erro inesperado:", e)
     sys.exit(1)
+    
+    
+#resolução ex 5)    
+""" Elabora uma script em python que peça ao utilizador um número e some todos
+os números de 1 até esse mesmo número. Deves utilizar o tratamento de
+erros."""
+
+try:
+    y=0
+    numero= int (input ("Intruduza um numero inteiro "))
+    for i in range(1,numero+1):
+        y+=i
+    print(y)
+except ValueError:
+    print("Erro: Digite apenas números inteiros.")
+ 
+    
+""" 6) Elabora uma script em python que peça ao utilizador dois números e devolva
+a divisão do primeiro número introduzido pelo seguinte. Trate erros como
+divisão por zero e valores inválidos"""
+#resolução ex 6)
+
+try:
+    numero1= float (input ("Intruduza 1 de 2 numeros "))
+    numero2= float (input ("Intruduza 2 de 2 numeros "))
+    divisao=numero1/numero2
+    print (divisao)
+except ValueError:
+    print("Erro: Digite um número inteiro válido.")
+except ZeroDivisionError:
+    print("Erro: Não é possível dividir por zero.")
+    
+    
+    
+
