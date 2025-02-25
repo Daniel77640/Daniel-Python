@@ -1,4 +1,4 @@
-"""1. Escreva um programa que, dada uma sequência de números inteiros
+"""Escreva um programa que, dada uma sequência de números inteiros
 (todos fornecidos na mesma linha, separados por espaços), imprima
 a média desses números."""
 
@@ -11,3 +11,9 @@ for n in numeros:
 média = soma / len(numeros)
 
 print ("A média dos valores intrduzidos é: ", format(média , ".3f"))
+
+#resolução2
+
+
+
+#resolução3

@@ -10,5 +10,5 @@ pontuacao = [".", ",", ":", ";", "!", "?"]
 for p in pontuacao:
     texto = texto. replace(p, " ")
 
-numPalavras = len( texto. split())
-print (" Número de palavras:", numPalavras)
+numpalavras = len(texto. split())
+print (" Número de palavras:", numpalavras)
