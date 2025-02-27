@@ -137,29 +137,59 @@ def calcular_hash(ficheiro):
     """Calcula o hash MD5 de um ficheiro binário para verificar integridade."""
     hash_md5 = hashlib.md5()
     with open(ficheiro, "rb") as f:
-        for chunk in iter(lambda: f.read(4096), b""): # Lê o ficheiro em blocos de 4KB
+        for chunk in iter(lambda: f.read(4096), b""):
             hash_md5.update(chunk)
     return hash_md5.hexdigest()
 def copiar_ficheiro_binario(origem, destino):    
     """Copia um ficheiro binário e verifica a integridade dos dados."""
     try:
-        # Verificar se o ficheiro de origem existe
+
         if not os.path.exists(origem):
             print("Erro: O ficheiro de origem não existe.")
             return
-        # Copiar o ficheiro binário
+
         with open(origem, "rb") as f_origem, open(destino, "wb") as f_destino:
-            for chunk in iter(lambda: f_origem.read(4096), b""): # Copia em blocos de 4KB
+            for chunk in iter(lambda: f_origem.read(4096), b""): 
                 f_destino.write(chunk)
-        # Verificar integridade dos ficheiros
+
         if calcular_hash(origem) == calcular_hash(destino):
             print(f"Sucesso! O ficheiro '{destino}' foi copiado corretamente.")
         else:
             print("Erro: A cópia do ficheiro não é idêntica ao original.")
     except Exception as e:
         print(f"Erro inesperado: {e}")
-        # Solicitar entrada do utilizador
         ficheiro_origem = input("Digite o nome do ficheiro binário a copiar: ")
-        ficheiro_destino = "copia_" + ficheiro_origem # Criar nome para o ficheiro copiado
-        # Executar a cópia e validação
+        ficheiro_destino = "copia_" + ficheiro_origem 
         copiar_ficheiro_binario(ficheiro_origem, ficheiro_destino)
+
+
+"""6) Cria ou faz download de um ficheiro CSV. De seguida cria um programa
+que leia o ficheiro CSV e mostre cada linha do mesmo."""
+
+import csv
+
+dados = [
+    ['Carro', 'Portas', 'L/100km'],
+    ['Fiat', 6, 6.1],
+    ['Citroen', 12, 8.9],
+    ['Seat', 4, 5.3],
+    ['Audi', 3, 8.8]
+]
+
+file_path = 'carros.csv'
+
+with open(file_path, mode='w', newline='', encoding='utf-8') as file:
+    writer = csv.writer(file)
+    writer.writerows(dados)
+
+print(f'Ficheiro CSV criado em: {file_path}')
+
+import csv
+
+file_path = 'carros.csv'
+
+with open(file_path, mode='r', newline='', encoding='utf-8') as file:
+    csv_reader = csv.reader(file)
+    
+    for linha in csv_reader:
+        print(linha)
