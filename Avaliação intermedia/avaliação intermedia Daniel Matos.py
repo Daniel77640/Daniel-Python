@@ -193,3 +193,25 @@ with open(file_path, mode='r', newline='', encoding='utf-8') as file:
     
     for linha in csv_reader:
         print(linha)
+        
+"""ParteIII"""
+#Exercicio 01
+import sqlite3
+
+conn = sqlite3.connect ("empresa.db")
+cursor = conn.cursor()
+
+cursor.execute ("""
+CREATE TABLE IF NOT EXISTS funcionarios (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    cargo TEXT NOT NULL,
+    salario TEXT NOT NULL
+    )
+""")
+
+conn.commit()
+conn.close()
+
+#Exercicio 02
+"""Acrescenta mais 2 funcionarios a base de dados alterando o codgo acima"""

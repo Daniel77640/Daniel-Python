@@ -4,11 +4,11 @@ conn = sqlite3.connect ("empresa.db")
 cursor = conn.cursor()
 
 cursor.execute ("""
-CREATE TABLE IF NOT EXISTS Alunos (
-    id INTEGER PRMARY KEY AUTOINCREMENT,
+CREATE TABLE IF NOT EXISTS funcionarios (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     nome TEXT NOT NULL,
-    idade INTEGER,
-    curso TEXT
+    cargo TEXT NOT NULL,
+    salario TEXT NOT NULL
     )
 """)
 
