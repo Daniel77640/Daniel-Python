@@ -195,7 +195,7 @@ with open(file_path, mode='r', newline='', encoding='utf-8') as file:
         print(linha)
         
 """ParteIII"""
-#Exercicio 01
+#Passo 01
 import sqlite3
 
 conn = sqlite3.connect ("empresa.db")
@@ -213,5 +213,162 @@ CREATE TABLE IF NOT EXISTS funcionarios (
 conn.commit()
 conn.close()
 
+"""2 Iserir dados"""
+
+import sqlite3
+conn = sqlite3.connect("empresa.db")
+cursor = conn.cursor()
+
+cursor.execute("INSERT INTO funcionarios (nome, cargo, salario) VALUES ('Ana Silva', 'Gestora', 3500)")
+cursor.execute("INSERT INTO funcionarios (nome, cargo, salario) VALUES ('Pedro Santos', 'Programador', 1500)")
+cursor.execute("INSERT INTO funcionarios (nome, cargo, salario) VALUES ('Mariana Costa', 'Designer', 3000)")
+
+conn.commit()
+conn.close()
+
+
+conn=sqlite3.connect('empresa.db')
+
 #Exercicio 02
-"""Acrescenta mais 2 funcionarios a base de dados alterando o codgo acima"""
+"""1 - Acrescenta mais 2 funcionarios a base de dados alterando o codgo acima"""
+
+import sqlite3
+conn = sqlite3.connect("empresa.db")
+cursor = conn.cursor()
+
+cursor.execute("INSERT INTO funcionarios (nome, cargo, salario) VALUES ('Daniel Matos', 'SubBigBoss', 6000)")
+cursor.execute("INSERT INTO funcionarios (nome, cargo, salario) VALUES ('Pedro PEreira', 'BigBoss', 2500)")
+
+conn.commit()
+conn.close()
+
+cursor.execute("empresa.db")
+
+conn = sqlite3.connect('empresa.db')
+cursor = conn.cursor()
+
+"""3 - Consultar dados"""
+#cosultar todos os fucncionarios
+cursor.execute("SELECT *FROM funcionarios")
+funcionarios = cursor.fetchall()
+
+#exibir os resultados
+for funcionario in funconarios:
+    print(funconario)
+    
+    conn.close()
+    
+
+#Exercicio 3
+import sqlite3
+# Estabelece uma igação ao banco de dados
+conn = sqlite3.connect('empresa.db')
+
+# Interagir com o banco de dados
+cursor = conn.cursor()
+
+# Executa um comando para trabalhar na tabela 'funcionarios'
+cursor.execute("SELECT * FROM funcionarios")
+
+# Recupera todos os resultados da consulta e armazena na variável 'funcionarios'
+funcionarios = cursor.fetchall()
+
+# procura e imprime cada funcionário
+for funcionario in funcionarios:
+    print(funcionario)
+
+# Fecha banco de dados
+conn.close()
+
+
+"""4 atualizar o salario de um funcionario especifico"""
+
+import sqlite3
+
+conn = sqlite3.connect('empresa.db')
+cursor = conn.cursor()
+
+cursor.execute("UPDATE funcionarios SET salario = 3000.00 WHERE nome = 'Pedro Santos'")
+
+conn.commit()
+
+conn.close()
+
+#2 - Modificar o código para aumentra o salario sde todos os funcionarios 5%
+
+import sqlite3
+conn = sqlite3.connect('empresa.db')
+cursor = conn.cursor()
+cursor.execute("UPDATE funcionarios SET salario = salario * 1.05")
+conn.commit()
+conn.close()
+
+"""5 - Eliminar dados"""
+
+conn = sqlite3.connect('empresa.db')
+cursor = conn.cursor()
+cursor.execute("DELETE FROM funcionarios WHERE nome = 'Mariana Costa'")
+conn.commit()
+conn.close()
+
+#2 modificar o codigo para eliminar todos osfuncnarios com salario inferior a 3000
+
+conn = sqlite3.connect('empresa.db')
+cursor = conn.cursor()
+cursor.execute("DELETE FROM funcionarios WHERE salario < 3000.00")
+conn.commit()
+conn.close()
+
+
+#Exercico final
+import sqlite3
+
+def menu():
+    while True:
+        print("\nMENU DE GESTÃO DE FUNCIONARIOS")
+        print("1. Adicionar funcionario")
+        print("2. Listar funcionarios")
+        print("3. Atualizar salario")
+        print("4. Eliminar funcionario")
+        print("5. Sair")
+        opcao = input("Escolha uma opção: ")
+
+        if opcao == '1':
+            nome = input("Nome: ")
+            cargo = input("Cargo: ")
+            salario = float(input("Salario: "))
+            cursor.execute("INSERT INTO funcionarios (nome, cargo, salario) VALUES (?, ?, ?)", (nome, cargo, salario))
+            conn.commit()
+
+        elif opcao == '2':
+            cursor.execute("SELECT * FROM funcionarios")
+            for funcionario in cursor.fetchall():
+                print(funcionario)
+
+        elif opcao == '3':
+            nome = input("Nome do funcionario: ")
+            novo_salario = float(input("Novo salario: "))
+            cursor.execute("UPDATE funcionarios SET salario = ? WHERE nome = ?", (novo_salario, nome))
+            conn.commit()
+
+        elif opcao == '4':
+            nome = input("Nome do funcionario a eliminar: ")
+            cursor.execute("DELETE FROM funcionarios WHERE nome = ?", (nome,))
+            conn.commit()
+
+        elif opcao == '5':
+            conn.commit()
+            conn.close()
+            break
+        else:
+            print("Opção inválida! Tente novamente.")
+
+conn = sqlite3.connect('empresa.db')
+cursor = conn.cursor()
+
+menu()
+
+
+
+
+
