@@ -39,13 +39,19 @@ def registrar_resultado():
         messagebox.showerror("Erro", "Por favor, insira a data no formato DD-MM-YY.")
         return
 
-    # Determinando o vencedor
+    # Determinando o vencedor e os pontos
     if gols_time1 > gols_time2:
         vencedor = time1
+        pontos_time1 = 3
+        pontos_time2 = 0
     elif gols_time2 > gols_time1:
         vencedor = time2
+        pontos_time1 = 0
+        pontos_time2 = 3
     else:
-        vencedor = "Empate"  # Caso os gols sejam iguais, é empate
+        vencedor = "Empate"
+        pontos_time1 = 1
+        pontos_time2 = 1
 
     # Criando ou carregando o arquivo Excel
     try:
@@ -57,10 +63,16 @@ def registrar_resultado():
     sheet = wb.active
     # Adicionando cabeçalhos, se necessário
     if sheet.max_row == 1:
-        sheet.append(["Data", "Time 1", "Time 2", "Gols Time 1", "Gols Time 2", "Vencedor"])
-    
+        sheet.append(["Data", "Time 1", "Time 2", "Gols Time 1", "Gols Time 2", "Vencedor", "Pontos Time 1", "Pontos Time 2"])
+
     # Salvando os dados no arquivo
-    sheet.append([data_jogo, time1, time2, gols_time1, gols_time2, vencedor])
+    sheet.append([data_jogo, time1, time2, gols_time1, gols_time2, vencedor, pontos_time1, pontos_time2])
+
+    # Criando fórmula para somar os pontos no final da tabela
+    ultima_linha = sheet.max_row
+    for i, time in enumerate(equipes, start=2):  # Começa da linha 2 (porque a 1ª é de cabeçalho)
+        formula = f"SOMASE(B$2:B${ultima_linha}, \"{time}\", G$2:G${ultima_linha}) + SOMASE(C$2:C${ultima_linha}, \"{time}\", H$2:H${ultima_linha})"
+        sheet[f"I{i}"] = formula  # Coloca a fórmula na coluna "I" para cada equipe
 
     # Salvando o arquivo
     wb.save('resultados_liga_portuguesa_2025.xlsx')
@@ -114,4 +126,3 @@ button_registrar.grid(row=6, column=0, columnspan=2, pady=10)
 
 # Iniciar a interface gráfica
 root.mainloop()
-
