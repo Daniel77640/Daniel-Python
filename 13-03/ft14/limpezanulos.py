@@ -52,4 +52,4 @@ print(df_train2.groupby('Embarked')["PassengerId"].count())
 df_train2['Embarked'].fillna('S', inplace=True)
 print(df_train2.info())
 
-df_train2.to_csv('train_no_nulls', index=False)
+df_train2.to_csv('train_no_nulls.csv', index=False)
