@@ -9,3 +9,35 @@ print(df_train.head())
 print(df_train.tail())
 
 print(df_train.dtypes)
+
+print(df_train.describe())
+
+print(df_train.isnull().any())
+print()
+
+print(df_train.info())
+
+df_train2 = df_train.drop('Cabin', axis=1)
+df_train.info()
+
+media_idade = df_train2['Age'].mean()
+mediana_idade = df_train2['Age'].median()
+print(media_idade)
+print(mediana_idade)
+
+df_train2['Age'].hist()
+plt.title('Idade')
+plt.show()
+
+df_train2['Age'].fillna(media_idade, inplace=True)
+df_train2['Age'].hist()
+
+media_idade = df_train2['Age'].mean()
+mediana_idade = df_train['Age'].median()
+
+print(media_idade)
+print(mediana_idade)
+
+df_train2['Age'].hist()
+plt.title('Idade')
+plt.show()
