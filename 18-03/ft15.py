@@ -49,5 +49,42 @@ ax3.bar(produtos.keys(), produtos.values()) #bar
 ax4.hist(np.random.random(1000)) #hist
 """plt.show()"""
 
-df = pd.read_csv("heart-disease.csv")
-df.head()
+import matplotlib.pyplot as plt  # Importar matplotlib se ainda não foi feito
+import pandas as pd
+df = pd.read_csv("heart-disease.csv") 
+# Certifica-te de que 'mais_de_50' existe
+mais_de_50 = df[df["age"] > 50]  # Filtrar pacientes com mais de 50 anos
+
+fig, ax = plt.subplots(figsize=(10, 6))
+
+# Criar scatter plot
+scatter = ax.scatter(mais_de_50["age"], mais_de_50["chol"], c=mais_de_50["target"])
+
+# Adicionar títulos e rótulos
+ax.set(title="Doença cardíaca e níveis de colesterol",
+       xlabel="Idade",
+       ylabel="Colesterol")
+
+# Adicionar legenda com cores baseadas na variável "target"
+ax.legend(*scatter.legend_elements(), title="Alvo")
+
+# Exibir o gráfico
+plt.show()
+
+
+
+import pandas as pd
+df = pd.read_csv("heart-disease.csv") 
+print(df.head())
+
+fig, ax = plt.subplots(figsize=(10, 6))
+scatter = ax.scatter(mais_de_50["age"],
+                     mais_de_50["chol"],
+                     c=mais_de_50["target"])
+ax.set(title="Doença cardiaca e niveis de colestrol",
+       xlabel="Idade",
+       ylabel="colestrol")
+ax.legend(*scatter.legend_elements(), title="Alvo");
+plt.show()
+
+
