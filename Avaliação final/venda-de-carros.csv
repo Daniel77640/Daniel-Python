@@ -1,0 +1,10 @@
+Produto;Categoria;Vendas;Data;Preço Unitário
+A;Eletrônicos;150;01/01/2025;15.5
+B;Eletrônicos;200;02/01/2025;20.0
+C;Roupas;100;03/01/2025;30.0
+A;Eletrônicos;300;04/01/2025;16.0
+B;Roupas;250;05/01/2025;19.5
+C;Roupas;150;06/01/2025;31.0
+A;Roupas;180;07/01/2025;17.0
+B;Eletrônicos;220;08/01/2025;20.5
+C;Roupas;130;09/01/2025;32.0
